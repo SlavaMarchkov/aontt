@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="create-branches-table.1" author="SlavaMarchkov">
+
+        <preConditions>
+            <not>
+                <tableExists tableName="branches"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="branches">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="full_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_address" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="director_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="branches"
+                                 baseColumnNames="company_id"
+                                 constraintName="FK_BRANCHES_COMPANY_ID"
+                                 referencedTableName="companies"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="branches"
+                                 baseColumnNames="director_id"
+                                 constraintName="FK_BRANCHES_DIRECTOR_ID"
+                                 referencedTableName="directors"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+</databaseChangeLog>

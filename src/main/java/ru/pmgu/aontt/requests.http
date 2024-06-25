@@ -1,0 +1,15 @@
+### GET all companies
+GET {{host}}/companies
+Accept: application/json
+
+### GET a company by ID
+GET {{host}}/companies/6
+Accept: application/json
+
+### GET all directors
+GET {{host}}/directors
+Accept: application/json
+
+### GET a director by ID
+GET {{host}}/directors/1
+Accept: application/json

@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: liquibase/scripts/create-directors-table.xml
+  - include:
+      file: liquibase/scripts/create-companies-table.xml
+  - include:
+      file: liquibase/scripts/create-branches-table.xml
